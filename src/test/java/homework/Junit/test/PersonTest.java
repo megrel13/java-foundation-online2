@@ -35,7 +35,6 @@ public class PersonTest {
     @Test
     public void shouldHaveCorrectTakeBear() {
         Person actualPerson = new Person(DEFAULT_NAME, DEFAULT_AGE);
-        actualPerson.takeBeer();
-        assertTrue(DEFAULT_AGE >= 18);
+        assertTrue(actualPerson.takeBeer());
     }
 }
