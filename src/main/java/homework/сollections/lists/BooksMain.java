@@ -131,7 +131,7 @@ public class BooksMain {
         System.out.println("Возвращаем первую книгу, длина автора которого делится на 3.");
 
         for (Book bookFirst : booksList) {
-            if ((bookFirst.getTitle().length() % 3) != 0) {
+            if ((bookFirst.getAuthor().length() % 3) == 0) {
                 System.out.println(bookFirst);
                 break;
             }
@@ -140,7 +140,7 @@ public class BooksMain {
         //а) Возвращаем все книги, длина автора которых делится на 3.
         System.out.println("Возвращаем все книги, длина автора которых делится на 3.");
         for (Book bookFirst : booksList) {
-            if ((bookFirst.getTitle().length() % 3) != 0) {
+            if ((bookFirst.getAuthor().length() % 3) == 0) {
                 System.out.println(bookFirst);
             }
         }
