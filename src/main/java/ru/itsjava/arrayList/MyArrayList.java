@@ -45,7 +45,23 @@ public class MyArrayList {
     }
 
     public boolean remove(Object o) {
-        return false;
+        int delIndex = -1;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] != null && array[i].equals(o)) {
+                delIndex = i;
+                break;
+            }
+        }
+        if (array.length - 1 - delIndex >= 0) {
+            System.arraycopy(array, delIndex + 1, array, delIndex, array.length - 1 - delIndex);
+        }
+
+        if (delIndex == -1) {
+            return false;
+        } else {
+            realSize--;
+            return true;
+        }
     }
 
     public void clear() {
@@ -58,11 +74,20 @@ public class MyArrayList {
 
 
     public Object get(int index) {
-        return null;
-
+        for (int i = 0; i < index; i++) {
+            if (index < 0 || index > size()) {
+                throw new ArrayIndexOutOfBoundsException();
+            }
+        }
+        return array[index];
     }
 
     public Object set(int index, Object element) {
+        if (index < size() && index >= 0) {
+            Object o = array[index];
+            array[index] = element;
+            return o;
+        }
         return null;
     }
 
@@ -82,11 +107,47 @@ public class MyArrayList {
     }
 
     public Object remove(int index) {
-        return null;
+        checkIndex(index);
+
+        Object resElement = array[index];
+        if (array.length - 1 - index >= 0) {
+            System.arraycopy(array, index + 1, array, index, array.length - 1 - index);
+        }
+        realSize--;
+        return resElement;
     }
 
+    private void checkIndex(int index) {
+        if (!isCorrectIndex(index)) {
+            throw new ArrayIndexOutOfBoundsException("Некорректный индекс");
+        }
+    }
+
+    private boolean isCorrectIndex(int index) {
+        if ((index > -1) || (index < realSize)) {
+            return true;
+        }
+        return false;
+    }
+
+
     public int indexOf(Object o) {
-        return 0;
+        for (int i = 0; i < size(); i++) {
+            if (o.equals(array[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int lastIndexOf(Object o) {
+        int lastIndex = -1;
+        for (int i = 0; i < size(); i++) {
+            if (o.equals(array[i])){
+                lastIndex = i;
+            }
+        }
+        return lastIndex;
     }
 
 
