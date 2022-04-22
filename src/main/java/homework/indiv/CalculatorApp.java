@@ -1,38 +1,39 @@
 package homework.indiv;
 
-
 import java.util.Scanner;
 
-public class Calculator {
+public class CalculatorApp {
     public static void main(String[] args) {
-        int num1;
-        int num2;
+        int operation;
         int result;
-        char operation;
-
 
         System.out.println("Введите два числа");
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Первое число: ");
-        num1 = scanner.nextInt();
+        int num1 = scanner.nextInt();
         System.out.println("Второе число: ");
-        num2 = scanner.nextInt();
+        int num2 = scanner.nextInt();
+
 
         System.out.print("\nВведите один из операторов: (+, -, *, /): ");
         operation = scanner.next().charAt(0);
         switch (operation) {
             case '+':
-                result = num1 + num2;
+                CalculatorOperationHandler handler1 = new CalculatorOperationHandler(new AdditionCalc());
+                result = handler1.calculation(num1, num2);
                 break;
             case '-':
-                result = num1 - num2;
+                CalculatorOperationHandler handler2 = new CalculatorOperationHandler(new DifferenceCalc());
+                result = handler2.calculation(num1, num2);
                 break;
             case '*':
-                result = num1 * num2;
+                CalculatorOperationHandler handler3 = new CalculatorOperationHandler(new MultiplicationCalc());
+                result = handler3.calculation(num1, num2);
                 break;
             case '/':
-                result = num1 / num2;
+                CalculatorOperationHandler handler4 = new CalculatorOperationHandler(new DivisionCalc());
+                result = handler4.calculation(num1, num2);
                 break;
             default:
                 System.out.print("Ошибка! Введите корректный оператор!");
