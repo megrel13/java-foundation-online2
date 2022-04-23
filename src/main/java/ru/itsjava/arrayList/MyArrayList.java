@@ -84,7 +84,6 @@ public class MyArrayList {
 
     public Object set(int index, Object element) {
         if (index < size() && index >= 0) {
-            Object o = array[index];
             array[index] = element;
             return o;
         }
