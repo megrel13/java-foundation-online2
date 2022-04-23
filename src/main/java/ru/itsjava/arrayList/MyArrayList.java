@@ -75,7 +75,7 @@ public class MyArrayList {
 
     public Object get(int index) {
         for (int i = 0; i < index; i++) {
-            if (index < 0 || index > size()) {
+            if (index < 0 || index >= size()) {
                 throw new ArrayIndexOutOfBoundsException();
             }
         }
