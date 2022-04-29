@@ -120,4 +120,79 @@ public class MyLinkedList {
         }
         return false;
     }
+
+    private void checkIndex(int index) {
+        if (!isCorrectIndex(index)) {
+            throw new ArrayIndexOutOfBoundsException("Некорректный индекс");
+        }
+    }
+
+    public Object remove(int index) {
+        checkIndex(index);// проверяем корректный индекс или нет и если он корректный, значит 1 элемент есть и это head
+        if (index == 0) {// если индекс = 0, удаляем head
+            Object resValue = head.getValue();
+            if (head.getNext() == null) { // если есть только head, присваиваем null
+                head = null;
+            } else {
+                head = head.getNext(); // если нет, то передвиганм ссылку head на след. элемент и рассматриваем только ее
+            }
+            return resValue;
+        }
+        // если мы не вернули ничего, значит есть минимум 2 элемента
+        Node curNode = head; // элемент который хотим удалить
+        Node prevNode = head; // предыдущий элемент
+        int count = 0;
+        while ((curNode = curNode.getNext()) != null) { // теперь curNode.getNext переместили и он равен строке2
+            count++;// пробегаемся по листу
+            if (count == index) { // проверка на выход
+                break;
+            }
+            prevNode = prevNode.getNext();//если мы не вышли, то перемещаем prevNode
+        }
+        if (curNode == null) return null;
+        Object resValue = curNode.getValue();
+
+        if (curNode.getNext() == null) { // если хотим удалить элемент с конца (строка3)
+            prevNode.setNext(null); // предыдущему эл-ту (строка2) присваиваем null
+        } else { // если это не последний ->
+            prevNode.setNext(curNode.getNext()); // если хотим удалить посередине, нужно перекинуть ссылку и (строка2) присвоить null
+            // prevNode(строка1).setnext (ссылка) curNode.getNext (строка3)
+            curNode.setNext(null);// у текущего элемента делем ссылку null
+        }
+        return resValue;
+    }
+
+    public int indexOf(Object o) {
+        if (isEmpty()) {
+            return -1;
+        }
+        Node curNode = head;
+        int i = -1;
+        while (curNode != null) {
+            i++;
+            if (curNode.getValue().equals(o)) {
+                return i;
+            }
+            curNode = curNode.getNext();
+        }
+        return -1;
+    }
+
+    public int lastIndexOf(Object o) {
+        if (isEmpty()) {
+            return -1;
+        }
+        Node curNode = head;
+        int i = -1, index = -1;
+        while (curNode != null) {
+            i++;
+            if (curNode.getValue().equals(o)) {
+                return i;
+            }
+            curNode = curNode.getNext();
+        }
+        return index;
+    }
+
 }
+

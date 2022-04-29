@@ -22,7 +22,10 @@ public class MyLinkedListPractice {
         list.set(0, "Строка0");
         System.out.println("list = " + list);
 
+        list.remove("Строка4");
+        System.out.println(list);
 
+        System.out.println("list.indexOf(\"Строка2\") = " + list.indexOf("Строка2"));
     }
-    
+
 }
