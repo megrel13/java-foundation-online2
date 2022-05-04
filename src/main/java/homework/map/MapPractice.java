@@ -29,18 +29,18 @@ public class MapPractice {
         System.out.println("fruitShop.containsKey(\"George\") = " + fruitShop.containsKey("George"));
         System.out.println("fruitShop.containsValue(orange) = " + fruitShop.containsValue(orange));
 
-        System.out.println("-------");
+        System.out.println("_____________________");
         for (String keyCustomer : fruitShop.keySet()) {
             System.out.println(keyCustomer + ": " + fruitShop.get(keyCustomer));
 
         }
 
-        System.out.println("--------");
+        System.out.println("_____________________");
         for (Fruit values : fruitShop.values()) {
             System.out.println(values + ": " + fruitShop.get(values));
         }
 
-        System.out.println("-------");
+        System.out.println("______________________");
 
         for (Map.Entry<String, Fruit> pair : fruitShop.entrySet()){
             System.out.println(pair.getKey() + ": " + pair.getValue());
