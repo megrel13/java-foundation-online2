@@ -14,6 +14,7 @@ public class MapPractice {
         Fruit apple = new Fruit("Apple", 5.4);
         Fruit orange = new Fruit("Orange", 7.2);
         Fruit lime = new Fruit("Lime", 4.1);
+        Fruit avocado = new Fruit("Avocado", 5.1);
 
 
         fruitShop.put("George", watermelon);
