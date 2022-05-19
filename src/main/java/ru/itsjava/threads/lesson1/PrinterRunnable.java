@@ -1,13 +1,12 @@
-package ru.itsjava.threads;
+package ru.itsjava.threads.lesson1;
 
 import lombok.AllArgsConstructor;
 import lombok.SneakyThrows;
 
 @AllArgsConstructor
-public class PrinterTread extends Thread {
+public class PrinterRunnable implements Runnable {
     private final String message;
     private final long delay;
-
 
     @SneakyThrows
     @Override
