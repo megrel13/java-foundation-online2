@@ -1,8 +1,4 @@
-package ru.itsjava.threads;
-
-import javafx.print.Printer;
-
-import java.sql.SQLOutput;
+package ru.itsjava.threads.lesson1;
 
 public class ThreadsPractice {
     public static void main(String[] args) throws InterruptedException {
